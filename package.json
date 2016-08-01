@@ -17,5 +17,10 @@
   ],
   "license": "UNLICENSED",
   "homepage": "https://bitbucket.org/dynamicdo/smartcontent-cdk#readme",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "jquery": "^3.1.0",
+    "lodash": "^4.14.0",
+    "vue": "^1.0.26"
+  }
 }
