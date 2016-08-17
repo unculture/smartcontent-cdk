@@ -161,7 +161,9 @@ elixir.extend('creative', function () {
     var fs = require('fs');
     var moment = require('moment');
 
-    var srcDirectory = 'dist/';
+    var srcGlob = '**/*';
+    var srcDir = 'dist/';
+    var globOptions = {cwd: __dirname + '/' + srcDir, nodir: true};
     var zipFile = creativeName + '_' + moment().format('YYYYMMDD-HHmmss') + '.zip';
     var zipPath = __dirname + '/zip/' + zipFile;
 
@@ -169,8 +171,8 @@ elixir.extend('creative', function () {
         var output = fs.createWriteStream(zipPath);
         var archive = archiver('zip', {});
         archive.pipe(output);
-        return archive.directory(srcDirectory, '/').finalize();
-      }, {src: srcDirectory, output: zipFile}
+        return archive.glob(srcGlob, globOptions).finalize();
+      }, {src: srcDir + srcGlob, output: zipFile}
     ).recordStep('Zip file written to Destination');
   })();
   // ------------------------------
