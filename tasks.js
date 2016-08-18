@@ -5,12 +5,6 @@
  *
  */
 
-// -------------------------------------------
-// Custom tasks specific to the creative should
-// be defined in ./tasks.creative.js
-// -------------------------------------------
-require('./tasks.creative');
-
 // -------------------------
 // Setup global dependencies
 // -------------------------
@@ -40,10 +34,6 @@ elixir.extend('creative', function () {
   // ----------
   function updateCdk() {
     [
-      {
-        src: "node_modules/smartcontent-cdk/tasks.js",
-        dst: "tasks.js"
-      },
       {
         src: "node_modules/smartcontent-cdk/lib/main.js",
         dst: "src/js/main.js"
