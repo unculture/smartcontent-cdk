@@ -18,8 +18,16 @@ var task = elixir.Task;
 // -------------
 elixir.config.assetsPath = 'src';
 elixir.config.publicPath = 'dist';
-var creativeName = __dirname.split('/').slice(-1)[0];
+var creativePath = process.cwd();
+var creativeName = creativePath.split('/').slice(-1)[0];
 // -------------
+
+// -------------------------------------------
+// Custom tasks specific to the creative should
+// be defined in creative /tasks.js
+// -------------------------------------------
+require(creativePath + '/tasks');
+// -------------------------------------------
 
 
 // ======================================================
@@ -140,10 +148,10 @@ elixir.extend('creative', function () {
       dst: 'dist/index.html',
       templateVars: {
         title: _startCase(creativeName),
-        testInclude: elixir.inProduction ? '' : require('./test/include')
+        testInclude: elixir.inProduction ? '' : require(creativePath + '/test/include')
       },
       inlineOptions: {
-        rootpath: __dirname + '/dist/'
+        rootpath: creativePath + '/dist/'
       }
     };
     var paths = new elixir.GulpPaths().src(config.src).output(config.dst);
@@ -185,9 +193,9 @@ elixir.extend('creative', function () {
 
     var srcGlob = '**/*';
     var srcDir = 'dist/';
-    var globOptions = {cwd: __dirname + '/' + srcDir, nodir: true};
+    var globOptions = {cwd: creativePath + '/' + srcDir, nodir: true};
     var zipFile = creativeName + '_' + moment().format('YYYYMMDD-HHmmss') + '.zip';
-    var zipPath = __dirname + '/zip/' + zipFile;
+    var zipPath = creativePath + '/zip/' + zipFile;
 
     new task('zip', function () {
         var output = fs.createWriteStream(zipPath);
