@@ -98,6 +98,38 @@ elixir.extend('creative', function () {
   elixir.mixins.sass('main.scss');
   // ------------
 
+  // ----------
+  // Rework CSS
+  // ----------
+  (function () {
+    if (!elixir.inProduction) {
+      return;
+    }
+
+    var postCss = require('gulp-postcss');
+    var postCssUrl = require("postcss-url");
+    var config = {
+      src: 'dist/css/main.css',
+      dst: 'dist/css/main.css'
+    };
+    var paths = new elixir.GulpPaths().src(config.src).output(config.dst);
+    new task('postCss', function ($) {
+      return gulp.src(paths.src.path)
+        .pipe(
+          postCss([
+            postCssUrl({
+              url: function (url) {
+                return url.replace('../', '');
+              }
+            })
+          ])
+        )
+        .pipe($.if(!paths.output.isDir, $.rename(paths.output.name)))
+        .pipe(this.saveAs(gulp));
+
+    }, paths).recordStep('CSS reworked');
+  })();
+
 
   // ------------
   // Transpile JS
@@ -126,7 +158,7 @@ elixir.extend('creative', function () {
     };
     var paths = new elixir.GulpPaths().src(config.src).output(config.dst);
     var _task = new task('processHtml', function ($) {
-      return gulp.src(paths.src.path, {dot: true})
+      return gulp.src(paths.src.path)
         .pipe(template(config.templateVars))
         .pipe($.if(elixir.inProduction, inlineSource(config.inlineOptions)))
         .pipe($.if(!paths.output.isDir, $.rename(paths.output.name)))
