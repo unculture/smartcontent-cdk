@@ -213,7 +213,7 @@ elixir.extend('creative', function () {
   // (development only)
   // -------------------
   if (!elixir.inProduction) {
-    elixir.mixins.rollup('test/test.js', 'dist/js/test.js');
+    elixir.mixins.rollup('test.js');
   }
   // -------------------
 
