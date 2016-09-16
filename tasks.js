@@ -132,7 +132,7 @@ elixir.extend('creative', function () {
   // ------------
   // Transpile JS
   // ------------
-  elixir.mixins.webpack('main.js');
+  elixir.mixins.rollup('main.js');
   // ------------
 
 
@@ -213,7 +213,7 @@ elixir.extend('creative', function () {
   // (development only)
   // -------------------
   if (!elixir.inProduction) {
-    elixir.mixins.webpack('test.js');
+    elixir.mixins.rollup('test.js');
   }
   // -------------------
 
