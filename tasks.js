@@ -208,15 +208,26 @@ elixir.extend('creative', function () {
   // ------------------------------
 
 
-  // -------------------
+  // ----------------------
   // Compile Test bundle
+  // Compile Browser events
+  // Symlink assets
   // (development only)
-  // -------------------
+  // ----------------------
   if (!elixir.inProduction) {
     elixir.mixins.rollup('test.js');
-  }
-  // -------------------
 
+    elixir.mixins.rollup(
+      './test/events/browser.js',
+      'test/browser-events.js',
+      null
+    );
+
+    var vfs = require('vinyl-fs');
+    vfs.src('./assets')
+      .pipe(vfs.symlink('./dist'));
+  }
+  // ----------------------
 
 });
 // ======================================================
