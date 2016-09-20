@@ -223,7 +223,7 @@ elixir.extend('creative', function () {
 
     var srcGlob = '**/*';
     var srcDir = 'dist/';
-    var globOptions = {cwd: creativePath + '/' + srcDir, nodir: true};
+    var globOptions = {cwd: creativePath + '/' + srcDir, nodir: true, ignore: 'assets/**'};
     var zipFile = creativeName + '_' + moment().format('YYYYMMDD-HHmmss') + '.zip';
     var zipPath = creativePath + '/zip/' + zipFile;
 
@@ -240,16 +240,22 @@ elixir.extend('creative', function () {
 
   // -------------------
   // Compile Test bundle
-  // Symlink Assets
   // (development only)
   // -------------------
   if (!elixir.inProduction) {
     elixir.mixins.rollup('test.js');
+  }
+  // -------------------
+
+  // --------------------------------
+  // Symlink Assets for local testing
+  // --------------------------------
+  (function () {
     var vfs = require('vinyl-fs');
     vfs.src('./assets')
       .pipe(vfs.symlink('./dist'));
-  }
-  // -------------------
+  })();
+  // --------------
 
   // ##########################
 
