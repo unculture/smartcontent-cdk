@@ -1,6 +1,6 @@
 {
   "name": "smartcontent-cdk",
-  "version": "0.2.7",
+  "version": "0.3.0",
   "description": "SmartContent Creative Development Kit",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,9 +18,23 @@
   "license": "UNLICENSED",
   "homepage": "https://bitbucket.org/dynamicdo/smartcontent-cdk#readme",
   "private": true,
-  "devDependencies": {
+  "dependencies": {
+    "archiver": "^1.0.0",
+    "del": "^2.2.1",
+    "gulp": "^3.9.1",
+    "gulp-inline-source": "^3.0.0",
+    "gulp-postcss": "^6.1.1",
+    "gulp-template": "^4.0.0",
     "jquery": "^3.1.0",
+    "laravel-elixir": "^6.0.0-10",
+    "laravel-elixir-rollup-official": "^1.0.4",
+    "laravel-elixir-webpack-official": "^1.0.5",
     "lodash": "^4.14.0",
+    "moment": "^2.15.0",
+    "postcss-url": "^5.1.2",
+    "smartcontent-cdk": "git+ssh://git@bitbucket.org/dynamicdo/smartcontent-cdk.git#master",
+    "stream-browserify": "^2.0.1",
+    "vinyl-fs": "^2.4.3",
     "vue": "^1.0.26"
   }
 }
