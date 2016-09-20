@@ -32,12 +32,21 @@ require(creativePath + '/tasks');
 // =============
 // Custom Mixins
 // =============
-var del = require('del');
 elixir.extend('delete', function (paths) {
+  var del = require('del');
   new task('delete', function () {
       return del.sync(paths);
     }, {src: paths, output: 'Trash!'}
   ).recordStep('Paths Deleted');
+});
+
+elixir.extend('symlink', function (src, dst) {
+  var vfs = require('vinyl-fs');
+  new task('symlink', function () {
+      return vfs.src(src)
+        .pipe(vfs.symlink(dst));
+    }, {src: src, output: dst}
+  ).recordStep('Symlink Created');
 });
 
 // ======================================================
@@ -250,11 +259,7 @@ elixir.extend('creative', function () {
   // --------------------------------
   // Symlink Assets for local testing
   // --------------------------------
-  (function () {
-    var vfs = require('vinyl-fs');
-    vfs.src('./assets')
-      .pipe(vfs.symlink('./dist'));
-  })();
+  elixir.mixins.symlink('./assets', './dist');
   // --------------
 
   // ##########################
