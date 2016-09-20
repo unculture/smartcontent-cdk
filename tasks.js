@@ -80,7 +80,7 @@ elixir.extend('creative', function () {
       'test/browser-events.js',
       null
     );
-    elixir.mixins.delete(['test/browser-events.js.map']);
+    elixir.mixins.delete('test/browser-events.js.map');
   }
 
   if (utils.env.browserEvents) {
@@ -197,13 +197,8 @@ elixir.extend('creative', function () {
         .pipe(this.saveAs(gulp));
 
     }, paths);
-
+    _task.watch(paths.src.path).ignore(paths.output.path);
     _task.recordStep('Variables substituted');
-
-    if(!elixir.inProduction) {
-      _task.watch(paths.src.path).ignore(paths.output.path);
-    }
-
     if (elixir.inProduction) {
       _task.recordStep('Inlines processed');
     }
