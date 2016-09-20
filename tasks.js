@@ -34,6 +34,13 @@ require(creativePath + '/tasks');
 // Single elixir alias within which all tasks are defined
 // ======================================================
 
+elixir.extend('delete', function (paths) {
+  new task('delete', function () {
+      return del.sync(paths);
+    }, {src: paths, output: 'Trash!'}
+  ).recordStep('Paths Deleted');
+});
+
 elixir.extend('creative', function () {
 
 
@@ -70,11 +77,7 @@ elixir.extend('creative', function () {
       'test/browser-events.js',
       null
     );
-    var mapPaths = ['test/browser-events.js.map'];
-    new task('delBrowserSourceMaps', function () {
-        return del.sync(mapPaths);
-      }, {src: mapPaths, output: 'Trash!'}
-    ).recordStep('Paths Deleted');
+    elixir.mixins.delete('test/browser-events.js.map');
   }
 
   if (utils.env.browserEvents) {
@@ -93,11 +96,7 @@ elixir.extend('creative', function () {
   // Clean build
   // ------------
   (function () {
-    var paths = ['dist/**/*', 'zip/**/*'];
-    new task('clean', function () {
-        return del.sync(paths);
-      }, {src: paths, output: 'Trash!'}
-    ).recordStep('Paths Deleted');
+    elixir.mixins.delete(['dist/**/*', 'zip/**/*']);
   })();
   // ------------
 
@@ -202,11 +201,7 @@ elixir.extend('creative', function () {
     }
 
     if (elixir.inProduction) {
-      var buildPaths = ['dist/js/**/*', 'dist/css/**/*'];
-      new task('clean', function () {
-          return del.sync(buildPaths);
-        }, {src: buildPaths, output: 'Trash!'}
-      ).recordStep('Paths Deleted');
+      elixir.mixins.delete(['dist/js/**/*', 'dist/css/**/*']);
     }
   })();
   // --------------------------
