@@ -9,7 +9,6 @@
 // Setup global dependencies
 // -------------------------
 var utils = require('gulp-util');
-var del = require('del');
 var elixir = require('laravel-elixir');
 var task = elixir.Task;
 
@@ -30,16 +29,20 @@ require(creativePath + '/tasks');
 // -------------------------------------------
 
 
-// ======================================================
-// Single elixir alias within which all tasks are defined
-// ======================================================
-
+// =============
+// Custom Mixins
+// =============
+var del = require('del');
 elixir.extend('delete', function (paths) {
   new task('delete', function () {
       return del.sync(paths);
     }, {src: paths, output: 'Trash!'}
   ).recordStep('Paths Deleted');
 });
+
+// ======================================================
+// Single elixir alias within which all tasks are defined
+// ======================================================
 
 elixir.extend('creative', function () {
 
@@ -77,7 +80,7 @@ elixir.extend('creative', function () {
       'test/browser-events.js',
       null
     );
-    elixir.mixins.delete('test/browser-events.js.map');
+    elixir.mixins.delete(['test/browser-events.js.map']);
   }
 
   if (utils.env.browserEvents) {
@@ -194,8 +197,13 @@ elixir.extend('creative', function () {
         .pipe(this.saveAs(gulp));
 
     }, paths);
-    _task.watch(paths.src.path).ignore(paths.output.path);
+
     _task.recordStep('Variables substituted');
+
+    if(!elixir.inProduction) {
+      _task.watch(paths.src.path).ignore(paths.output.path);
+    }
+
     if (elixir.inProduction) {
       _task.recordStep('Inlines processed');
     }
