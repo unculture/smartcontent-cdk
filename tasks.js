@@ -66,8 +66,12 @@ elixir.extend('creative', function () {
   function updateCdk() {
     [
       {
-        src: "node_modules/smartcontent-cdk/lib/main.js",
+        src: "node_modules/smartcontent-cdk/src/main.js",
         dst: "src/js/main.js"
+      },
+      {
+        src: "node_modules/smartcontent-cdk/src/events.js",
+        dst: "test/events.es6.js"
       },
     ].forEach(function (path) {
       elixir.mixins.copy(path.src, path.dst);
@@ -85,11 +89,11 @@ elixir.extend('creative', function () {
   // ----------------------
   function browserEvents() {
     elixir.mixins.rollup(
-      './test/events/browser.js',
-      'test/browser-events.js',
+      './test/events.es6.js',
+      'test/events.js',
       null
     );
-    elixir.mixins.delete('test/browser-events.js.map');
+    elixir.mixins.delete('test/events.js.map');
   }
 
   if (utils.env.browserEvents) {
