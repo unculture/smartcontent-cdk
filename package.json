@@ -1,6 +1,6 @@
 {
   "name": "smartcontent-cdk",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "SmartContent Creative Development Kit",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

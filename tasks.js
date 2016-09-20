@@ -37,6 +37,10 @@ require(creativePath + '/tasks');
 elixir.extend('creative', function () {
 
 
+  // ##########################
+  // One off tasks
+  // ##########################
+
   // ----------
   // Update CDK
   // ----------
@@ -54,8 +58,36 @@ elixir.extend('creative', function () {
   if (utils.env.updateCdk) {
     return updateCdk();
   }
-  // -----------
+  // ----------
 
+  // ----------------------
+  // Compile Browser events
+  // Symlink assets
+  // ----------------------
+  function browserEvents() {
+    elixir.mixins.rollup(
+      './test/events/browser.js',
+      'test/browser-events.js',
+      null
+    );
+    var mapPaths = ['test/browser-events.js.map'];
+    new task('delBrowserSourceMaps', function () {
+        return del.sync(mapPaths);
+      }, {src: mapPaths, output: 'Trash!'}
+    ).recordStep('Paths Deleted');
+  }
+
+  if (utils.env.browserEvents) {
+    return browserEvents();
+  }
+  // ----------------------
+
+  // ##########################
+
+
+  // ##########################
+  // Default tasks
+  // ##########################
 
   // ------------
   // Clean build
@@ -208,26 +240,20 @@ elixir.extend('creative', function () {
   // ------------------------------
 
 
-  // ----------------------
+  // -------------------
   // Compile Test bundle
-  // Compile Browser events
-  // Symlink assets
+  // Symlink Assets
   // (development only)
-  // ----------------------
+  // -------------------
   if (!elixir.inProduction) {
     elixir.mixins.rollup('test.js');
-
-    elixir.mixins.rollup(
-      './test/events/browser.js',
-      'test/browser-events.js',
-      null
-    );
-
     var vfs = require('vinyl-fs');
     vfs.src('./assets')
       .pipe(vfs.symlink('./dist'));
   }
-  // ----------------------
+  // -------------------
+
+  // ##########################
 
 });
 // ======================================================
