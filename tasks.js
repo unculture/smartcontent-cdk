@@ -260,10 +260,10 @@ elixir.extend('creative', function () {
   }
   // -------------------
 
-  // --------------------------------
-  // Symlink Assets for local testing
-  // --------------------------------
-  elixir.mixins.symlink('./assets', './dist');
+  // -------------------------------------
+  // Symlink test assets for local testing
+  // -------------------------------------
+  elixir.mixins.symlink('./test/assets', './dist');
   // --------------
 
   // ##########################
