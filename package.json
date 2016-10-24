@@ -1,13 +1,9 @@
 {
   "name": "smartcontent-cdk",
-  "version": "0.3.23",
+  "version": "0.3.24",
   "description": "SmartContent Creative Development Kit",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@bitbucket.org/dynamicdo/smartcontent-cdk.git"
   },
   "contributors": [
     {
@@ -32,7 +28,6 @@
     "lodash": "^4.14.0",
     "moment": "^2.15.0",
     "postcss-url": "^5.1.2",
-    "smartcontent-cdk": "git+ssh://git@bitbucket.org/dynamicdo/smartcontent-cdk.git#master",
     "stream-browserify": "^2.0.1",
     "vinyl-fs": "^2.4.3",
     "vue": "^1.0.26"
