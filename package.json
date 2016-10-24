@@ -1,6 +1,6 @@
 {
   "name": "smartcontent-cdk",
-  "version": "0.3.26",
+  "version": "0.3.27",
   "description": "SmartContent Creative Development Kit",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,6 +21,7 @@
   "dependencies": {
     "archiver": "^1.0.0",
     "del": "^2.2.1",
+    "emoji-regex": "^6.0.0",
     "gulp": "^3.9.1",
     "gulp-inline-source": "^3.0.0",
     "gulp-postcss": "^6.1.1",
