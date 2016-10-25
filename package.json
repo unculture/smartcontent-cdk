@@ -20,6 +20,7 @@
   "private": true,
   "dependencies": {
     "archiver": "^1.0.0",
+    "buble": "^0.12.5",
     "del": "^2.2.1",
     "emoji-regex": "^6.0.0",
     "gulp": "^3.9.1",
