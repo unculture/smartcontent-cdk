@@ -8,6 +8,7 @@
 // -------------------------
 // Setup global dependencies
 // -------------------------
+var systemPath = require('path');
 var utils = require('gulp-util');
 var elixir = require('laravel-elixir');
 var task = elixir.Task;
@@ -18,7 +19,7 @@ var task = elixir.Task;
 elixir.config.assetsPath = 'src';
 elixir.config.publicPath = 'dist';
 var creativePath = process.cwd();
-var creativeName = creativePath.split('/').slice(-1)[0];
+var creativeName = creativePath.split(systemPath.sep).slice(-1)[0];
 // -------------
 
 // -------------------------------------------
