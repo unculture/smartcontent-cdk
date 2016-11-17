@@ -17,7 +17,6 @@
   ],
   "license": "UNLICENSED",
   "homepage": "https://github.com/dynamic-do/smartcontent-cdk",
-  "private": true,
   "dependencies": {
     "archiver": "^1.0.0",
     "buble": "^0.12.5",
