@@ -12,7 +12,7 @@
   "contributors": [
     {
       "name": "Tom Castleman",
-      "email": "tom@b3it.co"
+      "email": "tom@dynamic.do"
     }
   ],
   "license": "UNLICENSED",
@@ -35,7 +35,6 @@
     "postcss-url": "^5.1.2",
     "stream-browserify": "^2.0.1",
     "vinyl-fs": "^2.4.3",
-    "vue": "^1.0.26",
-    "yarn": "^0.16.1"
+    "vue": "^1.0.26"
   }
 }
