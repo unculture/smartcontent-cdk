@@ -4,6 +4,7 @@
  * Browser entry point
  */
 import Creative from './Creative.js';
+import {versionEvent} from 'smartcontent-cdk/lib/version';
 
 /**
  * Initialise Creative and Listen for events.
@@ -12,13 +13,14 @@ import Creative from './Creative.js';
  */
 document.addEventListener('DOMContentLoaded', () => {
 
-  let creative = new Creative(window);
+  const creative = new Creative(window);
 
   window.addEventListener('message', (event) => {
     switch (event.data.event) {
-      case 'metaDataReceived':
-      case 'dataReceived':
-      case 'campaignDataReceived':
+      case versionEvent('metaDataReceived'):
+      case versionEvent('dataReceived'):
+      case versionEvent('campaignDataReceived'):
+      case versionEvent('rulesetsDataReceived'):
         creative.receiveData(event.data.event, event.data.data);
         break;
       case 'start':
