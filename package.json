@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:dynamic-do/smartcontent-cdk.git"
+    "url": "https://github.com/dynamicdo/smartcontent-cdk"
   },
   "contributors": [
     {
@@ -16,7 +16,7 @@
     }
   ],
   "license": "UNLICENSED",
-  "homepage": "https://github.com/dynamic-do/smartcontent-cdk",
+  "homepage": "https://github.com/dynamicdo/smartcontent-cdk",
   "dependencies": {
     "archiver": "^1.0.0",
     "buble": "^0.12.5",
