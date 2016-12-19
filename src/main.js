@@ -23,8 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
       case versionEvent('rulesetsDataReceived'):
         creative.receiveData(event.data.event, event.data.data);
         break;
+      case 'reset':
       case 'start':
-        creative.start();
+        creative[event.data.event]();
     }
   }, false);
 
