@@ -13,7 +13,11 @@ import {versionEvent} from 'smartcontent-cdk/lib/version';
  */
 document.addEventListener('DOMContentLoaded', () => {
 
-  const creative = new Creative(window);
+  const curtain = document.createElement('div');
+  curtain.setAttribute('id', 'curtain');
+  document.body.appendChild(curtain);
+
+  const creative = new Creative(window, curtain);
 
   window.addEventListener('message', (event) => {
     switch (event.data.event) {
@@ -24,8 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
         creative.receiveData(event.data.event, event.data.data);
         break;
       case 'reset':
+        creative.reset();
+        break;
       case 'start':
-        creative[event.data.event]();
+        creative.triggerStart();
     }
   }, false);
 
