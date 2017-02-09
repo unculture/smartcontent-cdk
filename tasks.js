@@ -54,8 +54,24 @@ elixir.extend('symlink', function (src, dst) {
 // Single elixir alias within which all tasks are defined
 // ======================================================
 
-elixir.extend('creative', function () {
+// ----------
+// Helper function to loop lifecycle arrays and run events
+// ----------
+var runLifeCycleEvents = function (funcArray) {
+  if (!funcArray instanceof Array) {return;}
 
+  funcArray.forEach(function (func) {
+    if (typeof func !== "function") {return;}
+    func();
+  })
+}
+// ----------
+
+elixir.extend('creative', function (opts) {
+  var lifeCycle = {
+    beforeZip: opts.beforeZip || [],
+    afterDelete: opts.afterDelete || []
+  }
 
   // ##########################
   // One off tasks
@@ -117,6 +133,13 @@ elixir.extend('creative', function () {
   })();
   // ------------
 
+  // ------------
+  // Run lifecycle event: afterDelete
+  // ------------
+  (function () {
+    runLifeCycleEvents(lifeCycle.afterDelete)
+  })();
+  // ------------
 
   // ------------------
   // Copy static assets
@@ -223,6 +246,13 @@ elixir.extend('creative', function () {
   })();
   // --------------------------
 
+  // ------------
+  // Run lifecycle event: beforeZip
+  // ------------
+  (function () {
+    runLifeCycleEvents(lifeCycle.beforeZip)
+  })();
+  // ------------
 
   // ---------------------------------
   // Create the zip package for upload
