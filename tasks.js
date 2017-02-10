@@ -57,7 +57,6 @@ elixir.extend('symlink', function (src, dst) {
 elixir.extend('creative', function (opts) {
 
   opts = opts || {};
-  console.log(opts);
 
   // ##########################
   // One off tasks
