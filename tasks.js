@@ -54,24 +54,10 @@ elixir.extend('symlink', function (src, dst) {
 // Single elixir alias within which all tasks are defined
 // ======================================================
 
-// ----------
-// Helper function to loop lifecycle arrays and run events
-// ----------
-var runLifeCycleEvents = function (funcArray) {
-  if (!funcArray instanceof Array) {return;}
-
-  funcArray.forEach(function (func) {
-    if (typeof func !== "function") {return;}
-    func();
-  })
-}
-// ----------
-
 elixir.extend('creative', function (opts) {
-  var lifeCycle = {
-    beforeZip: opts.beforeZip || [],
-    afterDelete: opts.afterDelete || []
-  }
+
+  opts = opts || {};
+  console.log(opts);
 
   // ##########################
   // One off tasks
@@ -137,7 +123,7 @@ elixir.extend('creative', function (opts) {
   // Run lifecycle event: afterDelete
   // ------------
   (function () {
-    runLifeCycleEvents(lifeCycle.afterDelete)
+    opts.afterDelete && opts.afterDelete();
   })();
   // ------------
 
@@ -250,7 +236,7 @@ elixir.extend('creative', function (opts) {
   // Run lifecycle event: beforeZip
   // ------------
   (function () {
-    runLifeCycleEvents(lifeCycle.beforeZip)
+    opts.beforeZip && opts.beforeZip();
   })();
   // ------------
 
