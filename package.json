@@ -1,6 +1,6 @@
 {
   "name": "smartcontent-cdk",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "description": "SmartContent HTML Creative Development Kit",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -28,7 +28,7 @@
     "gulp-template": "^4.0.0",
     "jquery": "^3.1.0",
     "laravel-elixir": "^6.0.0-10",
-    "laravel-elixir-rollup-official": "^1.0.4",
+    "laravel-elixir-rollup-official": "dynamicdo/Laravel-Elixir-Rollup#rollupfixes",
     "laravel-elixir-webpack-official": "^1.0.8",
     "lodash": "^4.14.0",
     "moment": "^2.15.0",
