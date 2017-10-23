@@ -90,7 +90,7 @@ elixir.extend('creative', function (opts) {
   // Symlink assets
   // ----------------------
   function browserEvents() {
-    elixir.mixins.rollup(
+    elixir.mixins.webpack(
       './test/events.es6.js',
       'test/events.js',
       null
