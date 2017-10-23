@@ -75,6 +75,10 @@ elixir.extend('creative', function (opts) {
         src: "node_modules/smartcontent-cdk/src/events.js",
         dst: "test/events.es6.js"
       },
+      {
+        src: "node_modules/smartcontent-cdk/webpack.config.js",
+        dst: "webpack.config.js"
+      },
     ].forEach(function (path) {
       elixir.mixins.copy(path.src, path.dst);
     });
