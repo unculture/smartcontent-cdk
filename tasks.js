@@ -75,6 +75,10 @@ elixir.extend('creative', function (opts) {
         src: "node_modules/smartcontent-cdk/src/events.js",
         dst: "test/events.es6.js"
       },
+      {
+        src: "node_modules/smartcontent-cdk/webpack.config.js",
+        dst: "webpack.config.js"
+      },
     ].forEach(function (path) {
       elixir.mixins.copy(path.src, path.dst);
     });
@@ -90,7 +94,7 @@ elixir.extend('creative', function (opts) {
   // Symlink assets
   // ----------------------
   function browserEvents() {
-    elixir.mixins.rollup(
+    elixir.mixins.webpack(
       './test/events.es6.js',
       'test/events.js',
       null
@@ -188,7 +192,7 @@ elixir.extend('creative', function (opts) {
   // ------------
   // Transpile JS
   // ------------
-  elixir.mixins.rollup('main.js');
+  elixir.mixins.webpack('main.js');
   // ------------
 
 
@@ -272,7 +276,7 @@ elixir.extend('creative', function (opts) {
   // (development only)
   // -------------------
   if (!elixir.inProduction) {
-    elixir.mixins.rollup('test.js');
+    elixir.mixins.webpack('test.js');
   }
   // -------------------
 
