@@ -72,7 +72,7 @@ module.exports = {
         ]
     },
  plugins: [
-    new CleanWebpackPlugin(['dist', 'zip/*.*'], {root: path.resolve(__dirname.split('/node_modules')[0]), verbose: true, dry: false})
+    new CleanWebpackPlugin(['dist', 'zip/*.*'], {root: path.resolve(__dirname.split('/node_modules')[0]), verbose: true, dry: false}),
     new CopyWebpackPlugin([
         { from: 'src/images', to: 'images' },
         { from: 'src/videos', to: 'videos' },
