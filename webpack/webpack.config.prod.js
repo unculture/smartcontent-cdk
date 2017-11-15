@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 var WebpackOnBuildPlugin = require("on-build-webpack");
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 var fs = require("fs");
 var moment = require("moment");
 
@@ -30,10 +31,17 @@ module.exports = merge(baseConfig, {
         fs.writeFileSync(path.join("./dist", htmlFileName), html)
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false
-        }
+    new UglifyJSPlugin({
+      uglifyOptions: {
+        ie8: false,
+        ecma: 8,
+        output: {
+          comments: false,
+          beautify: false,
+        },
+        warnings: false
+      },
+      sourceMap: true
     }),
     // Minify CSS
     new webpack.LoaderOptionsPlugin({
