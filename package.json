@@ -45,6 +45,7 @@
     "vue-template-compiler": "^2.5.2",
     "vue-template-loader": "^0.3.1",
     "webpack": "^3.8.1",
+    "webpack-cleanup-plugin": "^0.5.1",
     "webpack-dev-server": "^2.9.3",
     "webpack-merge": "^4.1.1",
     "webpack-zip-files-plugin": "^1.0.0"

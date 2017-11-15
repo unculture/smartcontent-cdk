@@ -7,6 +7,7 @@ const extractSass = new ExtractTextPlugin({
 });
 const fs = require("fs");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const WebpackCleanupPlugin require("webpack-cleanup-plugin");
 const webpack = require('webpack');
 
 
@@ -72,7 +73,8 @@ module.exports = {
         ]
     },
  plugins: [
-    new CleanWebpackPlugin(['dist/*.*', 'zip/*.*'], {root: path.resolve(__dirname.split('/node_modules')[0]), verbose: true, dry: false}),
+    new CleanWebpackPlugin(['zip/*.*'], {root: path.resolve(__dirname.split('/node_modules')[0]), verbose: true, dry: false}),
+    new WebpackCleanupPlugin(),
     new CopyWebpackPlugin([
         { from: 'src/images', to: 'images' },
         { from: 'src/videos', to: 'videos' },
