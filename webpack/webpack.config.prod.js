@@ -13,7 +13,7 @@ module.exports = merge(baseConfig, {
         main: './src/js/main.js',
     },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname.split('/node_modules')[0], 'dist'),
     filename: 'js/[name].js'
   },
    plugins: [
@@ -42,7 +42,7 @@ module.exports = merge(baseConfig, {
     }),
 
     new ZipFilesPlugin({
-      output: path.join(__dirname, `./zip/${path.basename(__dirname)}_${moment().format("YYYYMMDD-HHmmss")}`),
+      output: path.resolve(__dirname.split('/node_modules')[0], 'zip', `${path.basename(__dirname)}_${moment().format("YYYYMMDD-HHmmss")}`),
       format: 'zip',
     }),
   ],
