@@ -1,6 +1,7 @@
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.config.js');
 var WebpackOnBuildPlugin = require("on-build-webpack");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const path = require('path');
 var fs = require("fs");
 
@@ -14,6 +15,11 @@ module.exports = merge(baseConfig, {
     filename: 'js/[name].js'
   },
    plugins: [
+      new CopyWebpackPlugin([
+          { from: 'src/js/test.js', to: 'js/test.js' },      
+      ], {
+          copyUnmodified: true
+      }),
       new WebpackOnBuildPlugin(function (stats) {
         stats = stats.toJson()
         if (!stats.errors.length) {
