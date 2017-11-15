@@ -7,7 +7,7 @@ const extractSass = new ExtractTextPlugin({
 });
 const fs = require("fs");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-const WebpackCleanupPlugin require("webpack-cleanup-plugin");
+const WebpackCleanupPlugin = require("webpack-cleanup-plugin");
 const webpack = require('webpack');
 
 
