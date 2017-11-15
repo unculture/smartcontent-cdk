@@ -33,6 +33,11 @@ module.exports = merge(baseConfig, {
         }
       }),
     ],
+  devServer: {
+    contentBase: path.resolve(__dirname.split('/node_modules')[0], 'dist'),
+    compress: true,
+    port: 9000
+  }
 })
 
 
