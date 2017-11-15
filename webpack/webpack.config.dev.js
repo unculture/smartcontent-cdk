@@ -10,7 +10,7 @@ module.exports = merge(baseConfig, {
         test: './src/js/test.js',
     },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname.split('/node_modules')[0], 'dist'),
     filename: 'js/[name].js'
   },
    plugins: [
