@@ -17,7 +17,13 @@
   ],
   "license": "UNLICENSED",
   "homepage": "https://github.com/dynamicdo/smartcontent-cdk",
-  "devDependencies": {
+  "dependencies": {
+    "del": "^2.2.1",
+    "emoji-regex": "^6.0.0",
+    "jquery": "^3.1.0",
+    "lodash": "^4.14.0",
+    "moment": "^2.15.0",
+    "vue": "^1.0.26",
     "autoprefixer": "^7.1.6",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -41,13 +47,5 @@
     "webpack-dev-server": "^2.9.3",
     "webpack-merge": "^4.1.1",
     "webpack-zip-files-plugin": "^1.0.0"
-  },
-  "dependencies": {
-    "del": "^2.2.1",
-    "emoji-regex": "^6.0.0",
-    "jquery": "^3.1.0",
-    "lodash": "^4.14.0",
-    "moment": "^2.15.0",
-    "vue": "^1.0.26"
   }
 }
