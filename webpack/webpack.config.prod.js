@@ -30,11 +30,10 @@ module.exports = merge(baseConfig, {
         fs.writeFileSync(path.join("./dist", htmlFileName), html)
       }
     }),
-    new UglifyJsPlugin({
-      sourceMap: false,
-      compress: {
-        warnings: false
-      },
+    new webpack.optimize.UglifyJsPlugin({
+        compress: {
+            warnings: false
+        }
     }),
     // Minify CSS
     new webpack.LoaderOptionsPlugin({
