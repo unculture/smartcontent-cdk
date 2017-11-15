@@ -1,12 +1,12 @@
 const path = require('path');
-var CopyWebpackPlugin = require("copy-webpack-plugin");
-var WebpackOnBuildPlugin = require("on-build-webpack")
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const WebpackOnBuildPlugin = require("on-build-webpack")
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const extractSass = new ExtractTextPlugin({
     filename: "css/[name].css",
 });
-var fs = require("fs");
-var WebpackCleanupPlugin = require("webpack-cleanup-plugin");
+const fs = require("fs");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 const webpack = require('webpack');
 
 
@@ -72,7 +72,7 @@ module.exports = {
         ]
     },
  plugins: [
-    new WebpackCleanupPlugin(),
+    new CleanWebpackPlugin(['dist', 'zip/*.*'], {root: path.resolve(__dirname.split('/node_modules')[0]), verbose: true, dry: false})
     new CopyWebpackPlugin([
         { from: 'src/images', to: 'images' },
         { from: 'src/videos', to: 'videos' },
