@@ -9,6 +9,7 @@ const fs = require("fs");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const WebpackCleanupPlugin = require("webpack-cleanup-plugin");
 const webpack = require('webpack');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 
 module.exports = {
