@@ -1,7 +1,7 @@
 const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
-module.exports = merge(baseConfig, {
+module.exports = {
   entry: {
         main: './test/events.es6.js',
     },
@@ -23,6 +23,4 @@ module.exports = merge(baseConfig, {
       sourceMap: true
     }),
   ],
-})
-
-
+}
