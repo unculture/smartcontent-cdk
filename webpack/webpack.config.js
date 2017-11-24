@@ -73,6 +73,7 @@ module.exports = {
         ]
     },
  plugins: [
+    new FriendlyErrorsWebpackPlugin(),
     new CleanWebpackPlugin(['zip/*.*'], {root: path.resolve(__dirname.split('/node_modules')[0]), verbose: true, dry: false}),
     new WebpackCleanupPlugin(),
     new CopyWebpackPlugin([
