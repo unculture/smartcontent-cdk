@@ -143,6 +143,10 @@ elixir.extend('creative', function (opts) {
         src: "src/images",
         dst: "dist/images"
       },
+      {
+        src: "src/videos",
+        dst: "dist/videos"
+      },
     ].forEach(function (path) {
       elixir.mixins.copy(path.src, path.dst);
     });
