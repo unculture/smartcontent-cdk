@@ -20,14 +20,9 @@ module.exports = merge(baseConfig, {
           var htmlFileName = "index.html"
           var html = fs.readFileSync(path.join("./dist/", htmlFileName), "utf8")
           var mainScript = '<script type="text/javascript" src="js/main.js" inline ></script>' 
-          var testScript = '<script type="text/javascript" src="js/test.js" inline ></script>' 
           html = html.replace(
             '<script id="main"></script>',
             mainScript
-          )
-          html = html.replace(
-            '<script id="test"></script>',
-            testScript
           )
           fs.writeFileSync(path.join("./dist", htmlFileName), html)
         }

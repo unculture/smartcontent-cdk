@@ -2,7 +2,6 @@ const merge = require('webpack-merge');
 const baseConfig = require('./webpack.config.js');
 const ZipFilesPlugin = require('webpack-zip-files-plugin');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 var WebpackOnBuildPlugin = require("on-build-webpack");
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
